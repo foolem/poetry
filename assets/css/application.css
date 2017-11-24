@@ -30,8 +30,8 @@ html, body {
 }
 .presentation .presentation-down-button {
   position: absolute;
-  top: 80%;
-  left: 50%;
+  top: 70%;
+  left: 48%;
   transform: translate( -50%, -50% );
   text-align: center;
   color: white;
@@ -40,7 +40,8 @@ html, body {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: dimgray;
+  background-color: black;
+  opacity: 0.6;
 }
 .presentation .presentation-down h2 {
   position: absolute;
@@ -51,15 +52,62 @@ html, body {
   color: white;
   font-weight: bold;
   font-size: 5rem;
-  opacity: 0.7;
 }
 .poems {
   max-width: 100%;
   height: 1000px;
-  background-color: rgb(254, 254, 254);
+  background: #f9f9f9;
+  padding-top: 100px;
 }
 .poems h3 {
   text-align: center;
-  color:dimgrey;
-  font-size: 4rem;
+  color:rgb(78, 70, 57);
+  font-size: 7rem;
+  font-family: Amatic SC;
+}
+.card-b-romantic {
+  border-left: solid 5px #e95959;
+  margin: 20px 5px;
+}
+.card-b-melancholic {
+  border-left: solid 5px #46495B;
+  margin: 20px 5px;
+}
+.card-b-childish {
+  border-left: solid 5px #9569a4;
+  margin: 20px 5px;
+}
+.card-b-joy {
+  border-left: solid 5px #CA8D3E;
+  margin: 20px 5px;
+}
+.width-input {
+  width: 500px;
+}
+.fixed-top{
+  background-color: #32323C;
+  opacity: 0.8;
+}
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  animation-name: pulse;
+  animation-iteration-count: infinite;
 }
