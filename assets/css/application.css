@@ -65,29 +65,34 @@ html, body {
   font-size: 7rem;
   font-family: Amatic SC;
 }
-.card-b-romantic {
+.card-b-1 {
   border-left: solid 5px #e95959;
   margin: 20px 5px;
 }
-.card-b-melancholic {
+.card-b-2 {
   border-left: solid 5px #46495B;
   margin: 20px 5px;
 }
-.card-b-childish {
-  border-left: solid 5px #9569a4;
-  margin: 20px 5px;
-}
-.card-b-joy {
+.card-b-3 {
   border-left: solid 5px #CA8D3E;
   margin: 20px 5px;
 }
 .width-input {
   width: 500px;
 }
+.width-select {
+  width: 150px;
+}
 .fixed-top{
   background-color: #32323C;
   opacity: 0.8;
 }
+.new-poem {
+  margin: 10% auto;
+  width: 40%;
+}
+
+
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
