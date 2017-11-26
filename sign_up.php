@@ -10,7 +10,7 @@ if (isset($_POST) && !empty($_POST)) {
     session_start();
     $_SESSION['error'] = true;
     $_SESSION['user_name'] = $name;
-    $_SESSION['error_message'] = 'Email ou senha inválidos';
+    $_SESSION['error_message'] = 'Senhas não conferem';
 
 
     echo "Senhas não conferem";

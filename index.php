@@ -25,6 +25,12 @@ function hasError() {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/application.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="assets/js/application.js" type="text/javascript"></script>
+
   </head>
   <body>
     <section class="upperNav">
@@ -71,13 +77,7 @@ function hasError() {
       <section class="container-fluid">
 
 
-        <?php if (hasError()): ?>
-          <?php
-          echo $_SESSION['user_name'];
-          echo $_SESSION['error_message'];
-          session_destroy();
-          ?>
-        <?php endif; ?>
+
 
 
 
@@ -106,7 +106,6 @@ function hasError() {
       </section>
     </section>
 
-
     <!-- Modal -->
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal-label" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -125,7 +124,7 @@ function hasError() {
               </div>
               <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="text" class="form-control" name="password" aria-describedby="passwordLogin" placeholder="Sua senha">
+                <input type="password" class="form-control" name="password" aria-describedby="passwordLogin" placeholder="Sua senha">
               </div>
             </div>
             <div class="modal-footer">
@@ -146,6 +145,17 @@ function hasError() {
           </div>
           <form action="sign_up.php" method="post">
             <div class="modal-body">
+
+              <?php if (hasError()): ?>
+                <script type="text/javascript">
+                  $('#signup-modal').modal('show');
+                </script>
+                <?php
+                print_r("<span style='color:rgb(228, 102, 55)'>" . $_SESSION['error_message'] . "</span>" );
+                session_destroy();
+                ?>
+              <?php endif; ?>
+
               <div class="form-group">
                 <label for="name">Nome</label>
                 <input type="text" class="form-control" name="name" aria-describedby="nameLogin" placeholder="Seu nome">
@@ -156,11 +166,11 @@ function hasError() {
               </div>
               <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="text" class="form-control" name="password" aria-describedby="passwordLogin" placeholder="Sua senha">
+                <input type="password" class="form-control" name="password" aria-describedby="passwordLogin" placeholder="Sua senha">
               </div>
               <div class="form-group">
                 <label for="password">Confirme a senha</label>
-                <input type="text" class="form-control" name="confirm_password" aria-describedby="confirmPasswordLogin" placeholder="Confirme sua senha">
+                <input type="password" class="form-control" name="confirm_password" aria-describedby="confirmPasswordLogin" placeholder="Confirme sua senha">
               </div>
             </div>
             <div class="modal-footer">
@@ -171,10 +181,7 @@ function hasError() {
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script src="assets/js/application.js" type="text/javascript"></script>
+
 
   </body>
 </html>
