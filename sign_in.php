@@ -9,10 +9,11 @@ if (isset($_POST) && !empty($_POST)) {
   try {
     $stmt = $PDO->prepare("SELECT users.id, users.name FROM users WHERE users.email = :email AND users.password = :password LIMIT 1");
 
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':password', $password);
 
-    $stmt->execute();
+    $stmt->execute(array(
+      ':email' => $email,
+      ':password' => $password
+    ));
     $user = $stmt->fetch(PDO::FETCH_OBJ);
 
 

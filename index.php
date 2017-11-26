@@ -1,5 +1,6 @@
 <?php
 include_once "config.inc.php";
+
 $stmt = $PDO->prepare("SELECT * FROM poems");
 $stmt->execute();
 $poems = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -93,12 +94,27 @@ function hasError() {
           </div>
         </div>
         <?php foreach($poems as $poem): ?>
-        <div class="card d-inline-flex justify-content-center card-b-<?php echo $poem->category; ?>" style="width: 30rem">
-          <div class="card-body">
-            <h4 class="card-title"><?php echo $poem->title; ?></h4>
-            <p class="card-text"><?php echo $poem->content; ?></p>
-          </div>
-        </div>
+          <?php if($poem->status == 'evaluation') ?>
+            <div class="card d-inline-flex justify-content-center card-b-<?php echo $poem->category; ?>" style="width: 30rem">
+              <div class="card-body">
+                <form action="delete.php" method="post">
+                  <input type="hidden" name="id" value="<?php echo $poem->id; ?>">
+                  <button type="submit" class="btn btn-primary">Remover(admin)</button>
+                </form>
+                <form action="evaluate_publish.php" method="post">
+                  <input type="hidden" name="id" value="<?php echo $poem->id; ?>">
+                  <input type="hidden" name="status" value="published">
+                  <button type="submit" class="btn btn-primary">Publicar</button>
+                </form>
+                <form action="delete.php" method="post">
+                  <input type="hidden" name="id" value="<?php echo $poem->id; ?>">
+                  <button type="submit" class="btn btn-primary">Remover(av)</button>
+                </form>
+                <h4 class="card-title"><?php echo $poem->title; ?></h4>
+                <p class="card-text"><?php echo $poem->content; ?></p>
+              </div>
+            </div>
+          <?php endif; ?>
         <?php endforeach; ?>
 
 

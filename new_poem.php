@@ -6,7 +6,7 @@ if (isset($_POST) && !empty($_POST)) {
   $category = $_POST['category'];
   $content = $_POST['content'];
 
-  $stmt = $PDO->prepare( "INSERT INTO poems (`title`, `category`, `content`) VALUES ('{$title}', {$category}, '{$content}')");
+  $stmt = $PDO->prepare( "INSERT INTO poems (`title`, `author`, `status`, `category`, `content`) VALUES ('{$title}', 1, 'evaluation', {$category}, '{$content}')");
   $stmt->execute();
 
 }
