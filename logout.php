@@ -1,12 +1,8 @@
 <?php
+include "config.inc.php";
 
-// inicia a sessão
-session_start();
+unset($_SESSION['user']);
 
-// muda o valor de logged_in para false
-$_SESSION['logged_in'] = false;
-
-// finaliza a sessão
 session_destroy();
 
 // retorna para a index.php

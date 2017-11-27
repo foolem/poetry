@@ -1,12 +1,31 @@
 <?php
+session_start();
 include_once "config.inc.php";
 
+function isLoggedIn() {
+  if (!isset($_SESSION['user']['logged_in']) || $_SESSION['user']['logged_in'] !== true) {
+      return false;
+  }
+  return true;
+}
+
 if (isset($_POST) && !empty($_POST)) {
+  $id = $_SESSION['user']['id'];
   $title = $_POST['title'];
   $category = $_POST['category'];
   $content = $_POST['content'];
+  $status = "evaluation";
 
-  $stmt = $PDO->prepare( "INSERT INTO poems (`title`, `author`, `status`, `category`, `content`) VALUES ('{$title}', 1, 'evaluation', {$category}, '{$content}')");
+  $stmt = $PDO->prepare(
+    "INSERT INTO poems (`author`, `title`, `category`, `status`, `content`)
+    VALUES (:author, :title, :category, :status, :content);"
+  );
+  $stmt->bindParam(':author', $id);
+  $stmt->bindParam(':title', $title);
+  $stmt->bindParam(':category', $category);
+  $stmt->bindParam(':status', $status);
+  $stmt->bindParam(':content', $content);
+
   $stmt->execute();
 
 }
@@ -26,12 +45,25 @@ if (isset($_POST) && !empty($_POST)) {
     <section class="upperNav">
       <nav id="nav" class="navbar navbar-expand-lg navbar-light fixed-top">
         <section class="container-fluid">
-          <a class="navbar-brand" href="#">Poetry</a>
+          <a class="navbar-brand" href="index.php">Poetry</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
-          <a class="login-btn" href="#">Login</a>
+          <?php if (isLoggedIn()): ?>
+          <span style="color:#fff"><?php echo $_SESSION['user']['name']; ?></span>
+          <span style="color:#fff;margin:0 20px"> | </span>
+          <a class="login-btn" href="logout.php">Logout</a>
+          <?php else: ?>
+            <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#signup-modal">
+              Criar conta
+            </button>
+            <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#login-modal">
+              Login
+            </button>
+
+
+          <?php endif; ?>
         </section>
       </nav>
     </section>
