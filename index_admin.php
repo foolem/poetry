@@ -21,7 +21,7 @@ include_once "index.inc.php";
     <section class="upperNav">
       <nav id="nav" class="navbar navbar-expand-lg navbar-light fixed-top">
         <section class="container-fluid">
-          <a class="navbar-brand" href="index.php">Poetry</a>
+          <a class="navbar-brand" href="index_admin.php">Poetry</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -70,12 +70,12 @@ include_once "index.inc.php";
         <div class="row justify-content-center">
           <div class="row">
             <div class="col">
-              <form action="index.php" method="get">
+              <form action="index_admin.php" method="get">
                 <input id="search" type="text" name="search" value="<?php echo !empty($search_keyword) ? $search_keyword : ''; ?>" class="form-control width-input" placeholder="Pesquise poemas">
               </form>
             </div>
             <div class="col">
-              <form action="index.php" method="get">
+              <form action="index_admin.php" method="get">
                 <select class="form-control" id="select-filter" name="category">
                   <option value="" disabled>Filtros</option>
                   <option value="0" <?php echo $selected[0] ?> >Todas</option>
@@ -87,7 +87,6 @@ include_once "index.inc.php";
             </div>
 
           </div>
-
         </div>
           <?php if (isset($_SESSION['error_search'])): ?>
             <?php echo"<p class='text-center' style='color:rgb(228, 102, 55);text-align:center;'>" . $_SESSION['error_search'] . "</p>" ; ?>
@@ -97,18 +96,26 @@ include_once "index.inc.php";
 
 
           <?php foreach($poems as $poem): ?>
-            <?php if((!isset($_SESSION['user']) || $_SESSION['user']['role'] == 1) && $poem->status == 'published'): ?>
-                <div class="card d-inline-flex justify-content-center card-b-<?php echo $poem->category; ?>" style="width: 22rem;min-height:278.083px">
-                  <div class="card-body">
-                    <h4 class="card-title"><?php echo $poem->title; ?></h4>
-                    <h6 class="card-title">-<?php echo $poem->user_name; ?></h6>
-                    <p class="card-text more"><?php echo $poem->content; ?></p>
-                  </div>
-                </div>
 
+            <?php if(isset($_SESSION['user']) && $_SESSION['user']['role'] == 2): ?>
+              <div class="card d-inline-flex justify-content-center card-b-<?php echo $poem->category; ?>" style="width: 22rem;min-height:278.083px">
+                <div class="card-body">
+
+
+                  <form action="delete.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $poem->id; ?>">
+                    <button type="submit" class="btn btn-light m-0-admin">Remover</button>
+                  </form>
+
+
+                  <h4 class="card-title"><?php echo $poem->title; ?></h4>
+                  <h6 class="card-title">-<?php echo $poem->user_name; ?></h6>
+
+                  <p class="card-text more"><?php echo $poem->content; ?></p>
+                </div>
+              </div>
             <?php endif; ?>
 
-      
           <?php endforeach; ?>
 
         </section>

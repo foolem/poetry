@@ -20,6 +20,14 @@ if (isset($_POST) && !empty($_POST)) {
   } catch (PDOException $e) {
     echo $e->getMessage();
   }
+  if ($_SESSION['user']['role'] == 1) {
+    header('Location: index.php');
+  }
+  if ($_SESSION['user']['role'] == 2) {
+    header('Location: index_admin.php');
+  }
+  if ($_SESSION['user']['role'] == 3) {
+    header('Location: index_appraiser.php');
+  }
 
-  header('Location: index.php');
 }

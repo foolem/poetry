@@ -1,35 +1,12 @@
 <?php
-session_start();
 include_once "config.inc.php";
 
-function isLoggedIn() {
-  if (!isset($_SESSION['user']['logged_in']) || $_SESSION['user']['logged_in'] !== true) {
-      return false;
+include_once "new_poem.inc.php";
+function hasSuccess() {
+  if (isset($_SESSION['success'])) {
+    return true;
   }
-  return true;
 }
-
-if (isset($_POST) && !empty($_POST)) {
-  $id = $_SESSION['user']['id'];
-  $title = $_POST['title'];
-  $category = $_POST['category'];
-  $content = $_POST['content'];
-  $status = "evaluation";
-
-  $stmt = $PDO->prepare(
-    "INSERT INTO poems (`author`, `title`, `category`, `status`, `content`)
-    VALUES (:author, :title, :category, :status, :content);"
-  );
-  $stmt->bindParam(':author', $id);
-  $stmt->bindParam(':title', $title);
-  $stmt->bindParam(':category', $category);
-  $stmt->bindParam(':status', $status);
-  $stmt->bindParam(':content', $content);
-
-  $stmt->execute();
-
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,6 +47,11 @@ if (isset($_POST) && !empty($_POST)) {
 
     <section class="container-fluid">
       <section class="new-poem">
+        <?php if (hasSuccess()): ?>
+          <?php echo $_SESSION['success']; ?>
+          <?php unset($_SESSION['success']); ?>
+
+        <?php endif; ?>
         <h1 class="text-center">Adicionar um poema</h1>
 
 
@@ -97,7 +79,6 @@ if (isset($_POST) && !empty($_POST)) {
 
     </section>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="assets/js/application.js" type="text/javascript"></script>
   </body>
