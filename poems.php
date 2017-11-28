@@ -10,8 +10,6 @@ include_once "index.inc.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/application.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
   </head>
   <body>
@@ -42,88 +40,6 @@ include_once "index.inc.php";
             <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#login-modal">
               Login
             </button>
-            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal-label" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="login-modal-label">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <form action="sign_in.php" method="post">
-                    <div class="modal-body">
-                      <?php if (hasErrorLogin()): ?>
-                        <script type="text/javascript">
-                        $('#login-modal').modal('show');
-                        </script>
-                        <?php if(isset($_SESSION['error_login'])): ?>
-                          <?php print_r("<span style='color:rgb(228, 102, 55)'>" . $_SESSION['error_login'] . "</span>" );?>
-                          <?php unset($_SESSION['error_login']); ?>
-                        <?php endif; ?>
-                      <?php endif; ?>
-                      <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="email-login" type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
-                      </div>
-                      <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input type="password" class="form-control" name="password" aria-describedby="passwordLogin" placeholder="Sua senha">
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button id="submit-login" type="submit" class="btn btn-primary">Entrar</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup-modal-label" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="signup-modal-label">Criar conta</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <form action="sign_up.php" method="post">
-                    <div class="modal-body">
-
-                      <?php if (hasErrorSignup()): ?>
-                        <script type="text/javascript">
-                          $('#signup-modal').modal('show');
-                        </script>
-                        <?php if(isset($_SESSION['error_signup'])): ?>
-                          <?php print_r("<span style='color:rgb(228, 102, 55)'>" . $_SESSION['error_signup'] . "</span>" );?>
-                          <?php unset($_SESSION['error_signup']); ?>
-                        <?php endif; ?>
-                      <?php endif; ?>
-
-                      <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input type="text" class="form-control" name="name" aria-describedby="nameLogin" placeholder="Seu nome">
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="email-signup" type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
-                      </div>
-                      <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input type="password" class="form-control" name="password" aria-describedby="passwordLogin" placeholder="Sua senha">
-                      </div>
-                      <div class="form-group">
-                        <label for="password">Confirme a senha</label>
-                        <input type="password" class="form-control" name="confirm_password" aria-describedby="confirmPasswordLogin" placeholder="Confirme sua senha">
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button id="submit-signup" type="submit" class="btn btn-primary">Entrar</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
 
           <?php endif; ?>
 
@@ -186,14 +102,101 @@ include_once "index.inc.php";
       </section>
 
 
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="login-modal-label">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="sign_in.php" method="post">
+            <div class="modal-body">
+              <?php if (hasErrorLogin()): ?>
+                <script type="text/javascript">
+                $('#login-modal').modal('show');
+                </script>
+                <?php if(isset($_SESSION['error_login'])): ?>
+                  <?php print_r("<span style='color:rgb(228, 102, 55)'>" . $_SESSION['error_login'] . "</span>" );?>
+                  <?php unset($_SESSION['error_login']); ?>
+                  <?php session_destroy(); ?>
+                <?php endif; ?>
+              <?php endif; ?>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email-login" type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
+              </div>
+              <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" name="password" aria-describedby="passwordLogin" placeholder="Sua senha">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="submit-login" type="submit" class="btn btn-primary">Entrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup-modal-label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signup-modal-label">Criar conta</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="sign_up.php" method="post">
+            <div class="modal-body">
 
+              <?php if (hasErrorSignup()): ?>
+                <script type="text/javascript">
+                  $('#signup-modal').modal('show');
+                </script>
+                <?php if(isset($_SESSION['error_signup'])): ?>
+                  <?php print_r("<span style='color:rgb(228, 102, 55)'>" . $_SESSION['error_signup'] . "</span>" );?>
+                  <?php unset($_SESSION['error_signup']); ?>
+                  <?php session_destroy(); ?>
+                <?php endif; ?>
+              <?php endif; ?>
+
+              <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control" name="name" aria-describedby="nameLogin" placeholder="Seu nome">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email-signup" type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
+              </div>
+              <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" name="password" aria-describedby="passwordLogin" placeholder="Sua senha">
+              </div>
+              <div class="form-group">
+                <label for="password">Confirme a senha</label>
+                <input type="password" class="form-control" name="confirm_password" aria-describedby="confirmPasswordLogin" placeholder="Confirme sua senha">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="submit-signup" type="submit" class="btn btn-primary">Entrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <footer class="footer-poems">
       <span>Bárbara Vidal | Felipe Polchlopek | Filipe Fenrich </span><br>
       <span> <a href="user_terms.php">Termos de uso</a> </span>
     </footer>
 
-
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
     <script src="assets/js/application.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </body>
 </html>
