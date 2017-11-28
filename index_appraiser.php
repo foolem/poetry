@@ -50,19 +50,6 @@ include_once "index.inc.php";
       </nav>
     </section>
 
-    <?php if(!isset($_SESSION['user'])): ?>
-      <section id="presentation" class="presentation">
-        <section class="presentation-txt">
-          <h1>mostre sua arte.</h1>
-        </section>
-        <a id="poems_anchor" class="animated pulse presentation-down-button" href="#poems">
-          <section class="presentation-down">
-            <h2>v</h2>
-          </section>
-        </a>
-        <img src="assets/img/poema-preto.jpg" alt="Sua Poesia website">
-      </section>
-    <?php endif; ?>
 
     <section id="poems" class="poems">
       <section class="container">
@@ -135,7 +122,7 @@ include_once "index.inc.php";
 
 
 
-    
+
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

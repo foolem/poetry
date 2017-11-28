@@ -34,7 +34,7 @@ try {
     $mail->Port = 587;                                    // TCP port to connect to
     $email = $poem->user_email;
     $name = $poem->user_name;
-    $title = $poem->titel;
+    $title = $poem->title;
     //Recipients
     $mail->setFrom('suapoesiamail@gmail.com', 'Equipe');
     $mail->addAddress($email, $name);     // Add a recipient

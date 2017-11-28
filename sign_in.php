@@ -18,7 +18,6 @@ if (isset($_POST) && !empty($_POST)) {
       $_SESSION['user'] = ['id' => $user->id, 'name' => $user->name, 'email' => $user->email, 'role' => $user->role];
     }
     if ($stmt->rowCount() == 0) {
-      session_start();
       $_SESSION['error_login'] = true;
       $_SESSION['user_name'] = $name;
       $_SESSION['error_login'] = 'Email ou senha são inválidos';

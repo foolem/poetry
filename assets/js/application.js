@@ -19,7 +19,7 @@ $("#submit-login").click(function() {
     return false;
   }
 
-}
+});
 
 $("#submit-signup").click(function() {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -31,7 +31,7 @@ $("#submit-signup").click(function() {
     alert("Email inválido");
     return false;
   }
-}
+});
 
 var showChar = 200;
 var ellipsestext = "...";

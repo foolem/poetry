@@ -8,7 +8,6 @@ if (isset($_POST) && !empty($_POST)) {
   $confirm_password = $_POST['confirm_password'];
 
   if ($password != $confirm_password) {
-    session_start();
     $_SESSION['error_signup'] = true;
     $_SESSION['user_name'] = $name;
     $_SESSION['error_signup'] = 'Senhas não conferem';
@@ -31,6 +30,6 @@ if (isset($_POST) && !empty($_POST)) {
   }
 
   header('Location: poems.php');
-  
+
 
 }
