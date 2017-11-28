@@ -13,20 +13,28 @@ if (isset($_POST) && !empty($_POST)) {
 
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_OBJ);
+
     if($stmt->rowCount() > 0) {
-      $_SESSION['user'] = ['id' => $user->id, 'name' => $user->name, 'role' => $user->role];
+      $_SESSION['user'] = ['id' => $user->id, 'name' => $user->name, 'email' => $user->email, 'role' => $user->role];
+    }
+    if ($stmt->rowCount() == 0) {
+      session_start();
+      $_SESSION['error_login'] = true;
+      $_SESSION['user_name'] = $name;
+      $_SESSION['error_login'] = 'Email ou senha são inválidos';
+      header('Location: index.php');
     }
 
   } catch (PDOException $e) {
     echo $e->getMessage();
   }
-  if ($_SESSION['user']['role'] == 1) {
-    header('Location: index.php');
+  if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 1) {
+    header('Location: poems.php');
   }
-  if ($_SESSION['user']['role'] == 2) {
+  if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 2) {
     header('Location: index_admin.php');
   }
-  if ($_SESSION['user']['role'] == 3) {
+  if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 3) {
     header('Location: index_appraiser.php');
   }
 

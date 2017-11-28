@@ -18,7 +18,7 @@ include_once "index.inc.php";
     <section class="upperNav">
       <nav id="nav" class="navbar navbar-expand-lg navbar-light fixed-top">
         <section class="container-fluid">
-          <a class="navbar-brand" href="index.php">Poetry</a>
+          <a class="navbar-brand" href="poems.php">Poetry</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -47,32 +47,18 @@ include_once "index.inc.php";
       </nav>
     </section>
 
-    <?php if(!isset($_SESSION['user'])): ?>
-      <section id="presentation" class="presentation">
-        <section class="presentation-txt">
-          <h1>mostre sua arte.</h1>
-        </section>
-        <a id="poems_anchor" class="animated pulse presentation-down-button" href="#poems">
-          <section class="presentation-down">
-            <h2>v</h2>
-          </section>
-        </a>
-        <img src="assets/img/poema-preto.jpg" alt="Poetry website">
-      </section>
-    <?php endif; ?>
-
     <section id="poems" class="poems">
       <section class="container">
 
         <div class="row justify-content-center">
           <div class="row">
             <div class="col">
-              <form action="index.php" method="get">
+              <form action="poems.php" method="get">
                 <input id="search" type="text" name="search" value="<?php echo !empty($search_keyword) ? $search_keyword : ''; ?>" class="form-control width-input" placeholder="Pesquise poemas">
               </form>
             </div>
             <div class="col">
-              <form action="index.php" method="get">
+              <form action="poems.php" method="get">
                 <select class="form-control" id="select-filter" name="category">
                   <option value="" disabled>Filtros</option>
                   <option value="0" <?php echo $selected[0] ?> >Todas</option>

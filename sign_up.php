@@ -9,9 +9,9 @@ if (isset($_POST) && !empty($_POST)) {
 
   if ($password != $confirm_password) {
     session_start();
-    $_SESSION['error'] = true;
+    $_SESSION['error_signup'] = true;
     $_SESSION['user_name'] = $name;
-    $_SESSION['error_message'] = 'Senhas não conferem';
+    $_SESSION['error_signup'] = 'Senhas não conferem';
     header('Location: index.php');
   }
 

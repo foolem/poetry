@@ -1,4 +1,5 @@
 <?php
+
 $where = isset($_GET['category']) && $_GET['category'] != 0 && $_GET['category'] < 4 ? "AND poem.category = {$_GET['category']}" : '';
 for ($i = 0; $i<4; $i++) {
   if(isset($_GET['category']) && $_GET['category'] == $i) {
@@ -33,8 +34,15 @@ function isLoggedIn() {
   }
   return true;
 }
-function hasError() {
-  if (isset($_SESSION['error'])) {
+
+function hasErrorLogin() {
+  if (isset($_SESSION['error_login'])) {
+    return true;
+  }
+}
+
+function hasErrorSignup() {
+  if (isset($_SESSION['error_signup'])) {
     return true;
   }
 }
