@@ -35,7 +35,7 @@ include_once "index.inc.php";
           <a class="login-btn" href="logout.php">Logout</a>
           <?php else: ?>
 
-            <button type="button" href="oi.php" class="btn btn-primary mx-2" data-toggle="modal" data-target="#signup-modal">
+            <button type="button" href="new_user.php" class="btn btn-primary mx-2" data-toggle="modal" data-target="#signup-modal">
               Criar conta
             </button>
             <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#login-modal">
