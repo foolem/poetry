@@ -82,7 +82,7 @@ include_once "index.inc.php";
             <?php if((!isset($_SESSION['user']) || $_SESSION['user']['role'] == 1) && $poem->status == 'published'): ?>
                 <div class="card d-inline-flex justify-content-center card-b-<?php echo $poem->category; ?>" style="width: 22rem;min-height:278.083px">
                   <div class="card-body">
-                    <?php if(isset($_SESSION['user']) && $_SESSION['user']['id'] == $poem->author) ?>
+                    <?php if(isset($_SESSION['user']) && $_SESSION['user']['id'] == $poem->author): ?>
                       <form action="delete.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $poem->id; ?>">
                         <button type="submit" class="btn btn-light m-0-admin">Remover</button>

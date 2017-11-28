@@ -133,7 +133,7 @@ include_once "index.inc.php";
               <?php endif; ?>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
+                <input id="email-login" type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
               </div>
               <div class="form-group">
                 <label for="password">Senha</label>
@@ -141,7 +141,7 @@ include_once "index.inc.php";
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Entrar</button>
+              <button id="submit-login" type="submit" class="btn btn-primary">Entrar</button>
             </div>
           </form>
         </div>
@@ -176,7 +176,7 @@ include_once "index.inc.php";
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
+                <input id="email-signup" type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
               </div>
               <div class="form-group">
                 <label for="password">Senha</label>
@@ -188,7 +188,7 @@ include_once "index.inc.php";
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Entrar</button>
+              <button id="submit-signup" type="submit" class="btn btn-primary">Entrar</button>
             </div>
           </form>
         </div>
