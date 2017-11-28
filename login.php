@@ -45,40 +45,34 @@ include_once "index.inc.php";
       <section class="container">
 
 
-                    <h5 class="modal-title" id="signup-modal-label">Criar conta</h5>
+                <h5 class="modal-title" id="login-modal-label">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="sign_in.php" method="post">
+                <div class="modal-body">
+                  <?php if (hasErrorLogin()): ?>
 
-                  <form action="sign_up.php" method="post">
-                    <div class="modal-body">
-
-                      <?php if (hasErrorSignup()): ?>
-                        <?php if(isset($_SESSION['error_signup'])): ?>
-                          <?php print_r("<span style='color:rgb(228, 102, 55)'>" . $_SESSION['error_signup'] . "</span>" );?>
-                          <?php unset($_SESSION['error_signup']); ?>
-                        <?php endif; ?>
-                      <?php endif; ?>
-
-                      <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input type="text" class="form-control" name="name" aria-describedby="nameLogin" placeholder="Seu nome">
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="email-signup" type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
-                      </div>
-                      <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input type="password" class="form-control" name="password" aria-describedby="passwordLogin" placeholder="Sua senha">
-                      </div>
-                      <div class="form-group">
-                        <label for="password">Confirme a senha</label>
-                        <input type="password" class="form-control" name="confirm_password" aria-describedby="confirmPasswordLogin" placeholder="Confirme sua senha">
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button id="submit-signup" type="submit" class="btn btn-primary">Entrar</button>
-                    </div>
-                  </form>
-
+                    <?php if(isset($_SESSION['error_login'])): ?>
+                      <?php print_r("<span style='color:rgb(228, 102, 55)'>" . $_SESSION['error_login'] . "</span>" );?>
+                      <?php unset($_SESSION['error_login']); ?>
+                    <?php endif; ?>
+                  <?php endif; ?>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email-login" type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" class="form-control" name="password" aria-describedby="passwordLogin" placeholder="Sua senha">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button id="submit-login" type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+              </form>
+      
 
         </section>
       </section>
