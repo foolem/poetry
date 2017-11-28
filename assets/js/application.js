@@ -1,7 +1,7 @@
 $("#poems_anchor").click(function() {
    $('html,body').animate({scrollTop: $('#poems').offset().top}, 1000, function(){
      window.location.href = "http://suapoesia-com-br.umbler.net/poems.php";
-   });
+   })
 });
 $('#select-filter').change(function () {
   $(this).closest('form').submit();
