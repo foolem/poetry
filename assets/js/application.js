@@ -8,14 +8,6 @@ $('#select-filter').change(function () {
 });
 
 
-$("#new_user").click(function() {
-  window.location.href = "http://suapoesia-com-br.umbler.net/new_user.php";
-}
-$("#login").click(function() {
-  window.location.href = "http://suapoesia-com-br.umbler.net/login.php";
-}
-
-
 $("#submit-login").click(function() {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   var email = $('#email-login').val();
