@@ -47,7 +47,7 @@ include_once "index.inc.php";
       </nav>
     </section>
 
-      <section class="container mt-5 mb-5" style="margin-top:200px">
+      <section class="container mt-5 mb-5" style="padding-top:200px">
         <center>
         TERMOS DE USO
       </center><br>
