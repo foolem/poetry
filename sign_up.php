@@ -25,9 +25,21 @@ if (isset($_POST) && !empty($_POST)) {
 
     $stmt->execute();
 
+    if($stmt->rowCount() > 0) {
+      $_SESSION['user'] = ['id' => $user->id, 'name' => $user->name, 'email' => $user->email, 'role' => $user->role];
+    }
+
   } catch (PDOException $e) {
     echo $e->getMessage();
   }
 
-  header('Location: index.php');
+  if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 1) {
+    header('Location: poems.php');
+  }
+  if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 2) {
+    header('Location: index_admin.php');
+  }
+  if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 3) {
+    header('Location: index_appraiser.php');
+  }
 }

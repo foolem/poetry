@@ -8,7 +8,7 @@ include_once "index.inc.php";
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Poetry</title>
+    <title>Sua Poesia</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
@@ -21,7 +21,7 @@ include_once "index.inc.php";
     <section class="upperNav">
       <nav id="nav" class="navbar navbar-expand-lg navbar-light fixed-top">
         <section class="container-fluid">
-          <a class="navbar-brand" href="index_admin.php">Poetry</a>
+          <a class="navbar-brand" href="index_admin.php">Sua Poesia</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -60,7 +60,7 @@ include_once "index.inc.php";
             <h2>v</h2>
           </section>
         </a>
-        <img src="assets/img/poema-preto.jpg" alt="Poetry website">
+        <img src="assets/img/poema-preto.jpg" alt="Sua Poesia website">
       </section>
     <?php endif; ?>
 

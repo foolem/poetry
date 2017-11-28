@@ -5,7 +5,7 @@ include_once "index.inc.php";
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Poetry</title>
+    <title>Sua Poesia</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
@@ -18,7 +18,7 @@ include_once "index.inc.php";
     <section class="upperNav">
       <nav id="nav" class="navbar navbar-expand-lg navbar-light fixed-top">
         <section class="container-fluid">
-          <a class="navbar-brand" href="poems.php">Poetry</a>
+          <a class="navbar-brand" href="poems.php">Sua Poesia</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -82,6 +82,12 @@ include_once "index.inc.php";
             <?php if((!isset($_SESSION['user']) || $_SESSION['user']['role'] == 1) && $poem->status == 'published'): ?>
                 <div class="card d-inline-flex justify-content-center card-b-<?php echo $poem->category; ?>" style="width: 22rem;min-height:278.083px">
                   <div class="card-body">
+                    <?php if(isset($_SESSION['user']) && $_SESSION['user']['id'] == $poem->author) ?>
+                      <form action="delete.php" method="post">
+                        <input type="hidden" name="id" value="<?php echo $poem->id; ?>">
+                        <button type="submit" class="btn btn-light m-0-admin">Remover</button>
+                      </form>
+                    <?php endif; ?>
                     <h4 class="card-title"><?php echo $poem->title; ?></h4>
                     <h6 class="card-title">-<?php echo $poem->user_name; ?></h6>
                     <p class="card-text more"><?php echo $poem->content; ?></p>
@@ -119,7 +125,7 @@ include_once "index.inc.php";
               <?php endif; ?>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
+                <input id="email-login" type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
               </div>
               <div class="form-group">
                 <label for="password">Senha</label>
@@ -127,7 +133,7 @@ include_once "index.inc.php";
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Entrar</button>
+              <button id="submit-login" type="submit" class="btn btn-primary">Entrar</button>
             </div>
           </form>
         </div>
@@ -162,7 +168,7 @@ include_once "index.inc.php";
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
+                <input id="email-signup" type="text" class="form-control" name="email" aria-describedby="emailLogin" placeholder="Seu email">
               </div>
               <div class="form-group">
                 <label for="password">Senha</label>
@@ -174,7 +180,7 @@ include_once "index.inc.php";
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Entrar</button>
+              <button id="submit-signup" type="submit" class="btn btn-primary">Entrar</button>
             </div>
           </form>
         </div>

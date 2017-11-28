@@ -6,12 +6,19 @@ $("#poems_anchor").click(function() {
 $('#select-filter').change(function () {
   $(this).closest('form').submit();
 });
-// $("#search").keypress(function(event) {
-//     if (event.which == 13) {
-//         event.preventDefault();
-//         $(this).closest('form').submit();
-//     }
-// });
+
+
+$("#submit-login").click(function() {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  var email = $('#email-login').val();
+  return regex.test(email);
+}
+
+$("#submit-signup").click(function() {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  var email = $('#email-signup').val();
+  return regex.test(email);
+}
 
 var showChar = 200;
 var ellipsestext = "...";
