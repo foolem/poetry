@@ -11,13 +11,26 @@ $('#select-filter').change(function () {
 $("#submit-login").click(function() {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   var email = $('#email-login').val();
-  return regex.test(email);
+  result = regex.test(email);
+  if(result == true){
+    return true;
+  } else {
+    alert("Email inválido");
+    return false;
+  }
+
 }
 
 $("#submit-signup").click(function() {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   var email = $('#email-signup').val();
-  return regex.test(email);
+  result = regex.test(email);
+  if(result == true){
+    return true;
+  } else {
+    alert("Email inválido");
+    return false;
+  }
 }
 
 var showChar = 200;
