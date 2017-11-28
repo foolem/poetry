@@ -11,7 +11,7 @@ if (isset($_POST) && !empty($_POST)) {
     $_SESSION['error_signup'] = true;
     $_SESSION['user_name'] = $name;
     $_SESSION['error_signup'] = 'Senhas não conferem';
-    header('Location: index.php');
+    header('Location: new_user.php');
   }
 
   $password = hash('sha256', $password);

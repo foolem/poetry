@@ -21,7 +21,7 @@ if (isset($_POST) && !empty($_POST)) {
       $_SESSION['error_login'] = true;
       $_SESSION['user_name'] = $name;
       $_SESSION['error_login'] = 'Email ou senha são inválidos';
-      header('Location: index.php');
+      header('Location: login.php');
     }
 
   } catch (PDOException $e) {
