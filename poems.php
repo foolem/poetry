@@ -6,10 +6,14 @@ include_once "index.inc.php";
   <head>
     <meta charset="utf-8">
     <title>Sua Poesia</title>
-
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/application.css">
+
 
   </head>
   <body>
@@ -120,7 +124,6 @@ include_once "index.inc.php";
                 <?php if(isset($_SESSION['error_login'])): ?>
                   <?php print_r("<span style='color:rgb(228, 102, 55)'>" . $_SESSION['error_login'] . "</span>" );?>
                   <?php unset($_SESSION['error_login']); ?>
-                  <?php session_destroy(); ?>
                 <?php endif; ?>
               <?php endif; ?>
               <div class="form-group">
@@ -158,7 +161,6 @@ include_once "index.inc.php";
                 <?php if(isset($_SESSION['error_signup'])): ?>
                   <?php print_r("<span style='color:rgb(228, 102, 55)'>" . $_SESSION['error_signup'] . "</span>" );?>
                   <?php unset($_SESSION['error_signup']); ?>
-                  <?php session_destroy(); ?>
                 <?php endif; ?>
               <?php endif; ?>
 
@@ -192,11 +194,8 @@ include_once "index.inc.php";
       <span> <a href="user_terms.php">Termos de uso</a> </span>
     </footer>
 
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-    <script src="assets/js/application.js" type="text/javascript"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="assets/js/application.js" type="text/javascript"></script>
   </body>
 </html>
