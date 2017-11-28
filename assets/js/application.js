@@ -6,12 +6,12 @@ $("#poems_anchor").click(function() {
 $('#select-filter').change(function () {
   $(this).closest('form').submit();
 });
-$("#search").keypress(function(event) {
-    if (event.which == 13) {
-        event.preventDefault();
-        $(this).closest('form').submit();
-    }
-});
+// $("#search").keypress(function(event) {
+//     if (event.which == 13) {
+//         event.preventDefault();
+//         $(this).closest('form').submit();
+//     }
+// });
 
 var showChar = 200;
 var ellipsestext = "...";

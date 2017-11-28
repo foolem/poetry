@@ -10,7 +10,7 @@ if (isset($_POST) && !empty($_POST)) {
   $id = $_SESSION['user']['id'];
   $title = $_POST['title'];
   $category = $_POST['category'];
-  $content = $_POST['content'];
+  $content = preg_replace('/\n|\n\r/', '<br>', $_POST['content']);
   $status = "evaluation";
 
   $stmt = $PDO->prepare(
@@ -26,5 +26,5 @@ if (isset($_POST) && !empty($_POST)) {
   $stmt->execute();
 
   $_SESSION['success'] = 'Seu poema foi enviado para avaliação';
-  
+
 }

@@ -68,7 +68,7 @@ include_once "index.inc.php";
           <div class="row">
             <div class="col">
               <form action="index.php" method="get">
-                <input id="search" type="text" name="search" value="<?php echo !empty($search_keyword) ? $search_keyword : ''; ?>" class="form-control width-input" placeholder="Pesquise poemas">
+                <input id="search" type="search" name="search" value="<?php echo !empty($search_keyword) ? $search_keyword : ''; ?>" class="form-control width-input" placeholder="Pesquise poemas">
               </form>
             </div>
             <div class="col">
