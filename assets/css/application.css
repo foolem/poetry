@@ -120,9 +120,12 @@ h6 {
   background-color: #212529;
   text-align: center;
   line-height: 30px;
+  color:#fff;
+  
 }
 .footer-poems span{
   margin:0 auto;
+  color:#fff;
 }
 .new-poem {
   margin: 10% auto;
